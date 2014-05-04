@@ -39,13 +39,13 @@ var Todo=Mongoose.model('Todo', {text:String});
 
 // api ---------------------------------------------------------------------
 	// get all todos
-	app.get('/api/todos', todos.mostrar);
+	app.get('/api/todos', todos.mostrar(Todo));
 
 	// create todo and send back all todos after creation
-	app.post('/api/todos', todos.anadir);
+	app.post('/api/todos', todos.anadir(Todo));
 
 	// delete a todo
-	app.delete('/api/todos/:todo_id', todos.borrar);
+	app.delete('/api/todos/:todo_id', todos.borrar(Todo));
 
 app.get('/', routes.index);
 

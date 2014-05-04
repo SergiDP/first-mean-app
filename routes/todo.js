@@ -1,7 +1,10 @@
 // JavaScript Document
-var Todo=require(./
+
 //Mostrar tareas ----------------------------------------
-exports.mostrar=function(req,res){
+exports.mostrar=
+function(Todo)
+{
+return function(req,res){
 Todo.find(function(err, todos) {
 
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
@@ -12,9 +15,12 @@ Todo.find(function(err, todos) {
 			res.json(todos); // return all todos in JSON format
 		});
 };
+};
 
 //Anadir tareas -------------------------------------------
-exports.anadir=function(req,res){
+exports.anadir=function(Todo)
+{
+	return function(req,res){
 
 Todo.create({
 			text : req.body.text,
@@ -31,10 +37,12 @@ Todo.create({
 			});
 		});
 };
-
+};
 
 //Eliminar tareas --------------------------------------------
-exports.borrar=function(req,res){
+exports.borrar=function(Todo)
+{
+	return function(req,res){
 Todo.remove({
 			_id : req.params.todo_id
 		}, function(err, todo) {
@@ -48,6 +56,7 @@ Todo.remove({
 				res.json(todos);
 			});
 		});
+};
 };
 
 
